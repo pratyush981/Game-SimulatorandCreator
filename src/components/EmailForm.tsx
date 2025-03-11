@@ -2,11 +2,13 @@
 import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from 'react-router-dom';
 
 const EmailForm = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,7 +23,7 @@ const EmailForm = () => {
 
     setIsSubmitting(true);
     
-    // Simulate submission
+    // Simulate submission and redirect to CreateGame page
     setTimeout(() => {
       toast({
         title: "Success!",
@@ -29,6 +31,7 @@ const EmailForm = () => {
       });
       setEmail('');
       setIsSubmitting(false);
+      navigate('/create-game');
     }, 1500);
   };
 
