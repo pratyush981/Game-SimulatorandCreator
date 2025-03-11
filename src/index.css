@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,19 +36,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -88,6 +82,15 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  /* Custom Fonts */
+  @font-face {
+    font-family: 'Arcade';
+    src: url('/fonts/arcade.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 }
 
 @layer base {
@@ -96,6 +99,80 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-arcade-dark text-white;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-arcade-purple to-arcade-pink;
+}
+
+.terminal {
+  background-color: #11141F;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: monospace;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.close-button {
+  background-color: #FF5F56;
+}
+
+.minimize-button {
+  background-color: #FFBD2E;
+}
+
+.maximize-button {
+  background-color: #27C93F;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background-color: #7B68EE;
+  animation: cursor-blink 1s step-end infinite;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+/* Animations for page elements */
+.delayed-fade-in {
+  opacity: 0;
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
 }
