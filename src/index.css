@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -175,4 +174,9 @@
 
 .delay-500 {
   animation-delay: 500ms;
+}
+
+/* Custom styles for game workspace */
+.clip-path-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Share2, Download, Lock, Sparkles } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from 'react-router-dom';
 
 const gameCategories = [
   { id: 'rpg', name: 'RPG Adventure', icon: <span className="text-lg">🗡️</span> },
@@ -16,6 +17,7 @@ const CreateGame = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleCreate = () => {
     if (!gameIdea.trim()) {
@@ -28,13 +30,14 @@ const CreateGame = () => {
     
     setIsCreating(true);
     
-    // Simulate creation
+    // Simulate creation and redirect to workspace
     setTimeout(() => {
       toast({
         title: "Success!",
         description: "Your game is being generated.",
       });
       setIsCreating(false);
+      navigate('/workspace');
     }, 1500);
   };
 
