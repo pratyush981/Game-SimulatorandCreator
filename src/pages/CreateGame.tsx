@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Share2, Download, Lock, Sparkles } from 'lucide-react';
+import { Share2, Download, Lock, Sparkles, ArrowLeft } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from 'react-router-dom';
 
@@ -41,9 +41,22 @@ const CreateGame = () => {
     }, 1500);
   };
 
+  const goBack = () => {
+    navigate('/');
+  };
+
   return (
     <div className="min-h-screen flex flex-col overflow-hidden bg-arcade-dark">
       <div className="flex-1 container mx-auto px-4 py-8 max-w-6xl">
+        {/* Back button */}
+        <button 
+          onClick={goBack}
+          className="flex items-center text-gray-400 hover:text-white mb-6 transition-colors"
+        >
+          <ArrowLeft size={20} className="mr-2" />
+          <span>Back to home</span>
+        </button>
+        
         {/* Icon at the top */}
         <div className="w-full flex justify-center mb-6">
           <div className="w-24 h-24 rounded-full bg-arcade-terminal flex items-center justify-center relative">
